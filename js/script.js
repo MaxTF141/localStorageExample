@@ -1,6 +1,7 @@
 let people = [];
 //Submit
-let submit = document.querySelector('button');
+let submit = document.querySelector('#submit');
+let display = document.querySelector('#display');
 
 //Add event Listener
 submit.addEventListener('click', (e)=>{
@@ -17,7 +18,14 @@ submit.addEventListener('click', (e)=>{
             email
         }
     )
-    console.table(people)
-    
+    //Local Storage
+    localStorage.setItem('data', JSON.stringify(people));
 
+})
+// Add event Listener for display
+display.addEventListener('click', (e)=>{
+    e.preventDefault();
+    console.table(
+        JSON.parse(localStorage.getItem('data'))
+    )
 })
